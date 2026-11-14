@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Racing Game</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+      body { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; color: #fff; }
+      canvas { display: block; }
+      .panel { position: fixed; background: rgba(10, 12, 16, 0.6); border-radius: 8px; padding: 10px 14px; }
+      #timing { top: 16px; left: 16px; font-size: 14px; line-height: 1.6; }
+      #timing b { display: inline-block; width: 44px; font-weight: normal; opacity: 0.65; }
+      #map { position: fixed; top: 16px; right: 16px; }
+      #dash { bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; align-items: flex-end; gap: 14px; }
+      #speed { font-size: 44px; font-weight: bold; min-width: 3ch; text-align: right; display: inline-block; }
+      #gear { font-size: 44px; font-weight: bold; color: #ffd400; }
+      .unit { font-size: 12px; opacity: 0.65; }
+      .pedal { width: 10px; height: 52px; background: rgba(255, 255, 255, 0.15); position: relative; border-radius: 3px; overflow: hidden; }
+      .pedal div { position: absolute; bottom: 0; width: 100%; }
+      #thr { background: #3ddc5a; }
+      #brk { background: #ff4040; }
+      #grip { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); color: #ffd400; font-weight: bold; letter-spacing: 2px; transition: opacity 0.15s; opacity: 0; text-shadow: 0 1px 4px #000; }
+      #start { position: fixed; inset: 0; background: rgba(8, 10, 14, 0.72); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; }
+      #start h1 { margin: 0 0 12px; font-size: 40px; letter-spacing: 4px; }
+      #start p { margin: 0; opacity: 0.85; }
+      #start .go { margin-top: 18px; color: #ffd400; }
+    </style>
+  </head>
+  <body>
+    <div id="timing" class="panel">
+      <div><b>LAP</b><span id="lap">1</span></div>
+      <div><b>TIME</b><span id="time"></span></div>
+      <div><b>LAST</b><span id="last"></span></div>
+      <div><b>BEST</b><span id="best"></span></div>
+    </div>
+    <canvas id="map" width="170" height="170"></canvas>
+    <div id="grip"></div>
+    <div id="dash" class="panel">
+      <div class="pedal"><div id="brk"></div></div>
+      <div><span id="speed">0</span> <span class="unit">km/h</span></div>
+      <div id="gear">1</div>
+      <div class="pedal"><div id="thr"></div></div>
+    </div>
+    <div id="start">
+      <h1>RACING GAME</h1>
+      <p>W / ↑ throttle &nbsp;·&nbsp; S / ↓ / Space brake (hold when stopped to reverse)</p>
+      <p>A D / ← → steer &nbsp;·&nbsp; R reset to track &nbsp;·&nbsp; M mute</p>
+      <p>Gamepad: left stick + triggers</p>
+      <p class="go">Press any key to drive</p>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
